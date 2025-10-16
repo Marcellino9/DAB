@@ -1,13 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap/dist/js/bootstrap.bundle.js';
+import 'sweetalert2/dist/sweetalert2.min.css';
+import './theme.css';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { SessionProvider } from './session/SessionContext';
+import { LocaleProvider } from './i18n/LocaleContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <LocaleProvider>
+        <SessionProvider>
+          <App />
+        </SessionProvider>
+      </LocaleProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
